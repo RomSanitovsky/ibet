@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/RomSanitovsky/ibet#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
     "eslint": "^7.12.1",
@@ -36,6 +37,7 @@
     "mongo-sanitize": "^1.1.0",
     "mongoose": "^5.10.11",
     "morgan": "^1.10.0",
+    "node-gyp": "^7.1.2",
     "nodemailer": "^6.4.16",
     "nodemon": "^2.0.6",
     "prettier": "^2.1.2",
