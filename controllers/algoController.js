@@ -4,7 +4,5 @@ const axios = require('axios');
 
 exports.checkChances = catchAsync(async(req, res, next) => {
     
-    const leagueId = req.params.leagueId
-    axios.
-    
+    const leagueId = req.params.leagueId;    
 });

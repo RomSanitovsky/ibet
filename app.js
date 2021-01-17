@@ -65,7 +65,7 @@ app.use((req,res,next)=>{
 // 3) Routes
 
 app.use('/api/users', userRouter);
-app.use('/api/leagues')
+app.use('/api/leagues', leagueRouter);
 
 app.all('*' , (req,res,next)=> {
     next(new AppError(`Can't find ${req.originalUrl} on this server!`,404));
