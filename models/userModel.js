@@ -6,12 +6,11 @@ const crypto = require('crypto');
 const userSchema = new mongoose.Schema({
     nickname: {
         type: String,
-        require: [true , 'user must have a nickname'],
         unique: [true, 'nickname already been taken.. please try another one']
     },
     email : {
         type: String,
-        require: [true , 'user must have an email'],
+        required: [true , 'user must have an email'],
         unique: [true],
         lowercase: [true],
         validate: [validator.isEmail, 'Please provide a valid email']
