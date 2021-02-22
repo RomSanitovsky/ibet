@@ -4,19 +4,12 @@ const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
 
 const userSchema = new mongoose.Schema({
-    nickname: {
-        type: String,
-        unique: [true, 'nickname already been taken.. please try another one']
-    },
     email : {
         type: String,
         required: [true , 'user must have an email'],
         unique: [true],
         lowercase: [true],
         validate: [validator.isEmail, 'Please provide a valid email']
-    },
-    photo : {
-        type: String
     },
     role :{
         type: String,
