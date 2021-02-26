@@ -22,3 +22,4 @@ const scoreBoardSchema = new mongoose.Schema({
 
 const ScoreBoard = mongoose.model('ScoreBoard' , scoreBoardSchema);
 module.exports = ScoreBoard; 
+//
