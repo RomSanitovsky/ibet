@@ -13,6 +13,7 @@ const AppError = require('./utils/appError');
 const GlobalErrorHandler = require('./controllers/errorController')
 const userRouter = require('./routs/userRoutes');
 const leagueRouter = require('./routs/leagueRoutes');
+const algoRouter = require('./routs/algoRoutes');
 
 const app = express();
 
@@ -66,6 +67,7 @@ app.use((req,res,next)=>{
 
 // 3) Routes
 
+app.use('/api/algo', algoRouter);
 app.use('/api/users', userRouter);
 app.use('/api/leagues', leagueRouter);
 
