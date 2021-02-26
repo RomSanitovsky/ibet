@@ -1,8 +1,3 @@
-/*
-@author: Avanish Kumar Singh
-@email: avanish269@gmail.com
-@entry#: 2017MT10728
-*/
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -380,6 +375,5 @@ int main(int argc, char** argv)
             cout << __FILE__ << ": error: the input text file has only one line; atleast two lines of input needed\n";
     }
     cout << "Done.";
-    //raise(SIGINT);
     exit(0);
 }
