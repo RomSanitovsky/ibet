@@ -38,6 +38,7 @@
     "mongo-sanitize": "^1.1.0",
     "mongoose": "^5.10.11",
     "morgan": "^1.10.0",
+    "nba": "^4.15.0",
     "node-gyp": "^7.1.2",
     "nodemailer": "^6.4.16",
     "nodemon": "^2.0.6",
