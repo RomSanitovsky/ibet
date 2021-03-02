@@ -1,6 +1,0 @@
-Hufflepuff is eliminated.
-They can win at most 0 + 1 = 1 games.
-Ravenclaw and Slytherin have won a total of 2 games.
-They play each other 1 times.
-So on average, each of the team wins 3/2 = 1.5 games.
-
