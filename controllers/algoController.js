@@ -84,7 +84,7 @@ exports.algoSetup = catchAsync(async (req, res, next) => {
   fs.appendFileSync('./input.txt', '\n');
 
   results.forEach((el) => {
-    fs.appendFileSync('./input.txt', `${el.id} `);
+    fs.appendFileSync('./input.txt', `team${el.id} `);
     fs.appendFileSync('./input.txt', `${el.wins} `);
     fs.appendFileSync('./input.txt', `${el.losses} `);
     fs.appendFileSync('./input.txt', `${el.remaning} `);
@@ -96,7 +96,7 @@ exports.algoSetup = catchAsync(async (req, res, next) => {
 
   var pro = require('child_process');
   const child = pro.spawn(`${__dirname}\\..\\cppSRC\\baseballElimination.exe`, [
-    `${__dirname}\\input.txt`,
+    `${__dirname}\\..\\input.txt`,
   ]);
 
   child.on('close', (code) => {
