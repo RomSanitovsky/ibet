@@ -49,3 +49,5 @@ exports.checkChances = catchAsync(async (req, res, next) => {
     status: 'success',
   });
 });
+
+exports.algoSetup = catchAsync(async (req, res, next) => {});
