@@ -107,3 +107,11 @@ exports.algoSetup = catchAsync(async (req, res, next) => {
     status: 'success',
   });
 });
+
+exports.getStandings = catchAsync(async (req, res, next) => {
+  const standings = JSON.parse(fs.readFileSync('./getExampleStandings.json'));
+  res.status(200).json({
+    status: 'success',
+    data: standings,
+  });
+});
