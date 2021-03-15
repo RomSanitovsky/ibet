@@ -1,60 +1,10 @@
-Team4 is eliminated.
-They can win at most 66 + 14 = 80 games.
-Team22 has won a total of 84 games.
-They play each other 0 times.
-So on average, each of the teams in this group wins 84/1 = 84 games.
-
-Team5 is eliminated.
-They can win at most 71 + 11 = 82 games.
-Team22 has won a total of 84 games.
-They play each other 0 times.
-So on average, each of the teams in this group wins 84/1 = 84 games.
-
-Team7 is eliminated.
-They can win at most 68 + 13 = 81 games.
-Team22 has won a total of 84 games.
-They play each other 0 times.
-So on average, each of the teams in this group wins 84/1 = 84 games.
-
-Team9 is eliminated.
-They can win at most 65 + 16 = 81 games.
-Team22 has won a total of 84 games.
-They play each other 0 times.
-So on average, each of the teams in this group wins 84/1 = 84 games.
-
-Team11 is eliminated.
-They can win at most 74 + 8 = 82 games.
-Team22 has won a total of 84 games.
-They play each other 0 times.
-So on average, each of the teams in this group wins 84/1 = 84 games.
-
-Team12 is eliminated.
-They can win at most 70 + 11 = 81 games.
-Team22 has won a total of 84 games.
-They play each other 0 times.
-So on average, each of the teams in this group wins 84/1 = 84 games.
-
-Team13 is eliminated.
-They can win at most 69 + 15 = 84 games.
-Team14, Team15, Team17, Team20 and Team22 have won a total of 412 games.
-They play each other 15 times.
-So on average, each of the team wins 427/5 = 85.4 games.
-
-Team16 is eliminated.
-They can win at most 55 + 20 = 75 games.
-Team22 has won a total of 84 games.
-They play each other 0 times.
-So on average, each of the teams in this group wins 84/1 = 84 games.
-
-Team19 is eliminated.
-They can win at most 68 + 10 = 78 games.
-Team22 has won a total of 84 games.
-They play each other 0 times.
-So on average, each of the teams in this group wins 84/1 = 84 games.
-
-Team23 is eliminated.
-They can win at most 62 + 21 = 83 games.
-Team22 has won a total of 84 games.
-They play each other 0 times.
-So on average, each of the teams in this group wins 84/1 = 84 games.
-
+Team4
+Team5
+Team7
+Team9
+Team11
+Team12
+Team13
+Team16
+Team19
+Team23
