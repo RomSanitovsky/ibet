@@ -98,7 +98,7 @@ exports.algoSetup = catchAsync(async (req, res, next) => {
     });
   }
 
-  fs.writeFileSync('./input.txt', results.length);
+  fs.writeFileSync('./input.txt', `${results.length}`);
   fs.appendFileSync('./input.txt', '\n');
 
   results.forEach((el) => {
