@@ -143,6 +143,10 @@ exports.algoSetup = catchAsync(async (req, res, next) => {
     output[i].isEliminated = results[i].isEliminated;
   }
 
+  output.sort((a, b) => {
+    return b.wins / b.losses - a.wins / a.losses;
+  });
+
   res.status(200).json({
     status: 'success',
     data: output,
