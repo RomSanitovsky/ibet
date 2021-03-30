@@ -122,7 +122,7 @@ exports.algoSetup = catchAsync(async (req, res, next) => {
   });
 
   var eliminated = fs
-    .readFileSync('./eliminationList.txt')
+    .readFileSync(`${__dirname}/../cppSRC/EliminationList.txt`)
     .toString()
     .split('\n');
 
