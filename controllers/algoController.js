@@ -112,6 +112,7 @@ exports.algoSetup = catchAsync(async (req, res, next) => {
     fs.appendFileSync('./input.txt', '\n');
   });
 
+  console.log(__dirname);
   var pro = require('child_process');
   const child = pro.spawn(`./../cppSRC/BasketballEliminationProblem.exe`, [
     `./../input.txt`,
