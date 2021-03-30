@@ -113,10 +113,9 @@ exports.algoSetup = catchAsync(async (req, res, next) => {
   });
 
   var pro = require('child_process');
-  const child = pro.spawn(
-    `${__dirname}/../cppSRC/BasketballEliminationProblem.exe`,
-    [`${__dirname}/../input.txt`]
-  );
+  const child = pro.spawn(`${__dirname}/../cppSRC/baseballElimination`, [
+    `${__dirname}/../input.txt`,
+  ]);
 
   child.on('close', (code) => {
     console.log(`child process exited with code ${code}`);
