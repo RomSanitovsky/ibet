@@ -3,17 +3,9 @@ const validator = require('validator');
 const User = require('./userModel');
 
 const userScoreSchema = new mongoose.Schema({
-    score : {
-        type: Number,
-        default: 0,
-    },
-
-    user :{
-        type: mongoose.Schema.ObjectId,
-        ref: 'User',
-        required: true
-    },
-
+    gameId: {
+        type: String
+    }
     active: {
         type :Boolean,
         default: true,

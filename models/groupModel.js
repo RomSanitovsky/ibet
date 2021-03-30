@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 const User = require('./userModel');
+const Scoreboard = require('./scoreboardModel');
 
 const groupSchema = new mongoose.Schema({
     groupName : {
@@ -22,6 +23,14 @@ const groupSchema = new mongoose.Schema({
         ref: 'User',
         required: true
     }],
+
+    scoreManager : {
+        type: mongoose.Schema.ObjectId,
+        ref: 'Scoreboard',
+        required: true
+    }
+
+
 
     active: {
         type :Boolean,
