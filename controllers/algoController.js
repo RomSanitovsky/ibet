@@ -54,6 +54,45 @@ exports.checkChances = catchAsync(async (req, res, next) => {
 });
 
 exports.algoSetup = catchAsync(async (req, res, next) => {
+  await axios
+    .get('https://api-nba-v1.p.rapidapi.com/standings/standard/2020-2021', {
+      headers: {
+        'x-rapidapi-host': 'api-nba-v1.p.rapidapi.com',
+        'x-rapidapi-key': 'f97df4d38dmsh6bc2a968b7e539bp17dcb1jsn9c38f4b94a67',
+      },
+    })
+    .then((data) =>
+      fs.writeFileSync(
+        './getExampleStandings.json',
+        JSON.stringify(data.data.api)
+      )
+    );
+  console.log('check1');
+
+  await axios
+    .get('https://api-nba-v1.p.rapidapi.com/games/seasonYear/2020-2021', {
+      headers: {
+        'x-rapidapi-host': 'api-nba-v1.p.rapidapi.com',
+        'x-rapidapi-key': 'f97df4d38dmsh6bc2a968b7e539bp17dcb1jsn9c38f4b94a67',
+        useQueryString: true,
+      },
+    })
+    .then((data) =>
+      fs.writeFileSync('./getExampleGames.json', JSON.stringify(data.data.api))
+    );
+
+  await axios
+    .get('https://api-nba-v1.p.rapidapi.com/teams/league/standard', {
+      headers: {
+        'x-rapidapi-host': 'api-nba-v1.p.rapidapi.com',
+        'x-rapidapi-key': 'f97df4d38dmsh6bc2a968b7e539bp17dcb1jsn9c38f4b94a67',
+        useQueryString: true,
+      },
+    })
+    .then((data) =>
+      fs.writeFileSync('./getTeams.json', JSON.stringify(data.data.api))
+    );
+
   const standings = JSON.parse(fs.readFileSync('./getExampleStandings.json'));
   const games = JSON.parse(fs.readFileSync('./getExampleGames.json'));
   const teams = JSON.parse(fs.readFileSync('./getTeams.json')).teams;
