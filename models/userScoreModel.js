@@ -3,17 +3,15 @@ const validator = require('validator');
 const User = require('./userModel');
 
 const userScoreSchema = new mongoose.Schema({
-    gameId: {
-        type: String
-    }
-    active: {
-        type :Boolean,
-        default: true,
-        select: false
-    }
+  gameId: {
+    type: String,
+  },
+  active: {
+    type: Boolean,
+    default: true,
+    select: false,
+  },
 });
 
-
-
-const UserScore = mongoose.model('UserScore' , userScoreSchema);
-module.exports = UserScore; 
+const UserScore = mongoose.model('UserScore', userScoreSchema);
+module.exports = UserScore;
