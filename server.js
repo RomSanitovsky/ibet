@@ -2,8 +2,8 @@ const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const axios = require('axios');
 const fs = require('fs');
-const League = require('../models/leagueModel');
-const Team = require('../models/teamModel');
+const League = require('./models/leagueModel');
+const Team = require('./models/teamModel');
 
 process.on('uncaughtException', (err) => {
   console.log('UNHANDLER EXEPTION!    SHUTING DOWN...');
