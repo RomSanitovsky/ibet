@@ -115,11 +115,12 @@ const dataMaker = async () => {
     });
   }
 
+  console.log('writing');
   fs.writeFileSync('./input.txt', `${results.length}`);
   fs.appendFileSync('./input.txt', '\n');
-
+  console.log('writing');
   results.forEach((el) => {
-    fs.appendFileSync('./input.txt', `${el.teamName}`.split(' ').join('_'));
+    fs.appendFileSync('./input.txt', `${el.teamName.split(' ').join('_')} `);
     fs.appendFileSync('./input.txt', `${el.wins} `);
     fs.appendFileSync('./input.txt', `${el.losses} `);
     fs.appendFileSync('./input.txt', `${el.remaning} `);
