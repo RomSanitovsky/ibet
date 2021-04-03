@@ -142,5 +142,5 @@ const dataMaker = async () => {
   console.log('Done! data is ready now!');
 };
 
-dataMaker();
+module.exports = dataMaker;
 //
