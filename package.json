@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "bash chmod -R 777 ./ & node ./scripts/dataParserDaily.js & node server.js",
+    "compile": "chmod -R 777 ./",
+    "start": "node ./scripts/dataParserDaily.js & node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
