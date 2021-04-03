@@ -131,7 +131,7 @@ const dataMaker = async () => {
 
   var pro = require('child_process');
   const child = pro.spawn(`${__dirname}/../cppSRC/baseballElimination`, [
-    `${__dirname}/../input.txt`,
+    `./input.txt`,
   ]);
 
   child.on('close', (code) => {
