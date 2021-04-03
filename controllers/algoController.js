@@ -10,7 +10,8 @@ const Team = require('../models/teamModel');
 
 exports.algoSetup = catchAsync(async (req, res, next) => {
   var eliminated = fs
-    .readFileSync(`../scripts/EliminationList.txt`)
+  console.log(`${__dirname}`);
+    .readFileSync(`${__dirname}/../scripts/EliminationList.txt`)
     .toString()
     .split('\n');
 
