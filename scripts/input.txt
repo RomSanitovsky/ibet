@@ -1,0 +1,31 @@
+30
+teamMiami Heat 25 24 23 0 1 0 1 0 1 2 0 0 1 2 0 1 1 2 1 1 1 2 0 0 1 0 1 0 0 1 0 2 1 
+teamAtlanta Hawks 25 24 23 1 0 2 1 2 0 0 1 1 2 2 2 1 2 0 1 0 1 0 1 0 1 0 0 1 0 0 0 0 1 
+teamOrlando Magic 17 31 24 0 2 0 1 1 0 1 0 1 2 1 2 1 2 1 1 0 2 1 1 0 0 0 1 0 1 1 0 1 0 
+teamCharlotte Hornets 25 23 24 1 1 1 0 1 1 3 2 0 0 2 0 2 2 2 0 0 0 0 1 1 0 0 1 0 0 1 1 0 1 
+teamWashington Wizards 17 30 25 0 2 1 1 0 0 0 0 2 0 0 2 1 1 3 0 2 0 1 1 0 1 1 1 2 1 0 2 0 0 
+teamBrooklyn Nets 34 15 23 1 0 0 1 0 0 1 1 2 1 3 1 0 2 1 0 1 0 1 2 0 1 0 1 0 0 1 0 1 1 
+teamBoston Celtics 24 25 23 2 0 1 3 0 1 0 2 0 1 2 0 0 0 1 0 0 0 1 0 0 1 0 1 1 0 1 1 2 2 
+teamNew York Knicks 24 25 23 0 1 0 2 0 1 2 0 2 0 1 0 1 0 0 1 1 2 1 2 1 2 0 2 0 0 1 0 0 0 
+teamToronto Raptors 19 30 23 0 1 1 0 2 2 0 2 0 0 2 1 0 0 2 0 1 1 1 0 2 0 0 2 0 1 1 1 0 0 
+teamPhiladelphia 76ers 33 15 24 1 2 2 0 0 1 1 0 0 0 1 1 1 2 0 1 1 1 1 2 1 1 0 0 1 0 0 2 1 0 
+teamChicago Bulls 19 28 25 2 2 1 2 0 3 2 1 2 1 0 1 1 2 2 0 0 2 0 0 0 0 0 0 0 0 0 0 1 0 
+teamIndiana Pacers 21 26 25 0 2 2 0 2 1 0 0 1 1 1 0 1 1 1 1 0 1 2 0 1 0 1 1 0 1 0 2 1 1 
+teamDetroit Pistons 14 34 24 1 1 1 2 1 0 0 1 0 1 1 1 0 0 1 0 2 1 1 0 2 0 1 0 0 0 2 2 1 1 
+teamMilwaukee Bucks 30 17 25 1 2 2 2 1 2 0 0 0 2 2 1 0 0 0 2 1 1 1 0 0 1 1 0 1 0 0 0 1 0 
+teamCleveland Cavaliers 17 31 24 2 0 1 2 3 1 1 0 2 0 2 1 1 0 0 0 2 0 1 1 0 1 0 0 1 0 0 1 0 1 
+teamHouston Rockets 13 35 24 1 1 1 0 0 0 0 1 0 1 0 1 0 2 0 0 1 0 0 1 3 2 0 1 2 2 2 0 1 1 
+teamDallas Mavericks 26 21 25 1 0 0 0 2 1 0 1 1 1 0 0 2 1 2 1 0 2 1 1 0 0 3 2 1 1 0 0 1 0 
+teamMemphis Grizzlies 23 23 26 1 1 2 0 0 0 0 2 1 1 2 1 1 1 0 0 2 0 0 1 1 0 2 0 1 0 2 0 1 3 
+teamSan Antonio Spurs 24 22 26 2 0 1 0 1 1 1 1 1 1 0 2 1 1 1 0 1 0 0 1 0 3 1 0 0 2 2 0 0 2 
+teamNew Orleans Pelicans 21 27 24 0 1 1 1 1 2 0 2 0 2 0 0 0 0 1 1 1 1 1 0 1 0 1 1 3 0 1 1 1 0 
+teamLA Clippers 32 18 22 0 0 0 1 0 0 0 1 2 1 0 1 2 0 0 3 0 1 0 1 0 2 0 2 0 0 1 1 1 2 
+teamPhoenix Suns 33 14 25 1 1 0 0 1 1 1 2 0 1 0 0 0 1 1 2 0 0 3 0 2 0 1 1 1 2 0 1 0 1 
+teamSacramento Kings 22 26 24 0 0 0 0 1 0 0 0 0 0 0 1 1 1 0 0 3 2 1 1 0 1 0 1 1 3 0 3 3 0 
+teamLos Angeles Lakers 30 18 24 1 0 1 1 1 1 1 2 2 0 0 1 0 0 0 1 2 0 0 1 2 1 1 0 0 2 1 0 0 1 
+teamGolden State Warriors 23 26 23 0 1 0 0 2 0 1 0 0 1 0 0 0 1 1 2 1 1 0 3 0 1 1 0 0 1 2 3 1 0 
+teamUtah Jazz 37 11 24 0 0 1 0 1 0 0 0 1 0 0 1 0 0 0 2 1 0 2 0 0 2 3 2 1 0 1 2 2 2 
+teamDenver Nuggets 30 18 24 1 0 1 1 0 1 1 1 1 0 0 0 2 0 0 2 0 2 2 1 1 0 0 1 2 1 0 0 1 2 
+teamOklahoma City Thunder 20 27 25 0 0 0 1 2 0 1 0 1 2 0 2 2 0 1 0 0 0 0 1 1 1 3 0 3 2 0 0 0 1 
+teamMinnesota Timberwolves 12 37 23 2 0 1 0 0 1 2 0 0 1 1 1 1 1 0 1 1 1 0 1 1 0 3 0 1 2 1 0 0 0 
+teamPortland Trail Blazers 29 18 25 1 1 0 1 0 1 2 0 0 0 0 1 1 0 1 1 0 3 2 0 2 1 0 1 0 2 2 1 0 0 
