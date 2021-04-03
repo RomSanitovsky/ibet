@@ -119,7 +119,7 @@ const dataMaker = async () => {
   fs.appendFileSync('./input.txt', '\n');
 
   results.forEach((el) => {
-    fs.appendFileSync('./input.txt', `team${el.teamName} `);
+    fs.appendFileSync('./input.txt', `${el.teamName}`.split(' ').join('_'));
     fs.appendFileSync('./input.txt', `${el.wins} `);
     fs.appendFileSync('./input.txt', `${el.losses} `);
     fs.appendFileSync('./input.txt', `${el.remaning} `);
