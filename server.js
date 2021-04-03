@@ -30,7 +30,7 @@ mongoose
     console.log(err.name, err.message);
   });
 
-await please();
+please();
 
 const app = require('./app');
 
