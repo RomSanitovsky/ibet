@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.use(authController.protect);
 
-router.get('/teams', teamController.getAllTeams);
-router.get('/teams/:id', teamController.getTeam);
+router.get('/', teamController.getAllTeams);
+router.get('/:id', teamController.getTeam);
 
 module.exports = router;

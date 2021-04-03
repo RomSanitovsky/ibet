@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.use(authController.protect);
 
-router.get('/league', leagueController.getAllLeagues);
-router.get('/league/:id', leagueController.getLeague);
+router.get('/', leagueController.getAllLeagues);
+router.get('/:id', leagueController.getLeague);
 
 module.exports = router;
