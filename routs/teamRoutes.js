@@ -1,13 +1,13 @@
 const express = require('express');
 const userController = require('../controllers/userController');
 const authController = require('../controllers/authController.js');
-const leagueController = require('../controllers/leagueController');
+const teamController = require('../controllers/teamsController');
 
 const router = express.Router();
 
 router.use(authController.protect);
 
-router.get('/league', leagueController.getAllLeagues);
-router.get('/league/:id', leagueController.getLeague);
+router.get('/teams', teamController.getAllTeams);
+router.get('/teams/:id', teamController.getTeam);
 
 module.exports = router;
