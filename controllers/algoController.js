@@ -10,10 +10,8 @@ const Team = require('../models/teamModel');
 
 exports.algoSetup = catchAsync(async (req, res, next) => {
   console.log(`${__dirname}`);
-  var pro = require('child_process');
-  const child = pro.spawn(`ls -alR /app`);
   var eliminated = fs
-    .readFileSync('../scripts/EliminationList.txt')
+    .readFileSync('/app/scripts/EliminationList.txt')
     .toString()
     .split('\n');
 
