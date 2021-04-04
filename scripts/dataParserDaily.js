@@ -82,6 +82,8 @@ const dataMaker = async () => {
     //Set up map between 1-30 ids to API ids
     teamMap[standings.standings[i].teamId] = i + 1;
 
+    console.log('creating teams');
+
     teams.forEach((team) => {
       if (team.teamId === results[i].apiId) {
         results[i].teamName = team.fullName;
@@ -126,6 +128,8 @@ const dataMaker = async () => {
     fs.appendFileSync('./input.txt', '\n');
   });
 
+  console.log('spawning algorithm');
+
   var pro = require('child_process');
   const child = pro.spawn(`${__dirname}/../cppSRC/baseballElimination`, [
     `./input.txt`,
@@ -134,6 +138,21 @@ const dataMaker = async () => {
   child.on('close', (code) => {
     console.log(`child process exited with code ${code}`);
   });
+
+  console.log('creating leagues');
+
+  const teams = Team.find();
+
+  const teamsIDsArray = [];
+  teams.forEach((el) => {
+    teamsIDsArray.push(el.id);
+  });
+
+  const nba = {};
+  nba.name = 'NBA';
+  nba.teams = teams;
+
+  Team.create(nba);
 
   console.log('Done! data is ready now!');
 };
