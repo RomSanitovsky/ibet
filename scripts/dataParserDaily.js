@@ -152,7 +152,7 @@ const dataMaker = async () => {
   nba.name = 'NBA';
   nba.teams = teamsCreated;
 
-  await Team.create(nba);
+  await League.create(nba);
 
   console.log('Done! data is ready now!');
 };
