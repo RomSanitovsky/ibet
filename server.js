@@ -1,6 +1,5 @@
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
-const please = require('./scripts/dataParserDaily');
 
 process.on('uncaughtException', (err) => {
   console.log('UNHANDLER EXEPTION!    SHUTING DOWN...');
@@ -8,9 +7,8 @@ process.on('uncaughtException', (err) => {
   process.exit(1);
 });
 
-if (!process.env.PORT) {
-  dotenv.config({ path: './config.env' });
-}
+dotenv.config({ path: './config.env' });
+const please = require('./scripts/dataParserDaily');
 
 const DB = process.env.DATABASE.replace(
   '<password>',

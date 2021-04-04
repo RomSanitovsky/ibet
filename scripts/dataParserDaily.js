@@ -6,10 +6,6 @@ const axios = require('axios');
 const League = require('../models/leagueModel');
 const Team = require('../models/teamModel');
 
-if (!process.env.PORT) {
-  dotenv.config({ path: '../config.env' });
-}
-
 const DB = process.env.DATABASE.replace(
   '<password>',
   process.env.DATABASE_PASSWORD
