@@ -141,18 +141,18 @@ const dataMaker = async () => {
 
   console.log('creating leagues');
 
-  const teams = Team.find();
+  const teamsCreated = await Team.find();
 
   const teamsIDsArray = [];
-  teams.forEach((el) => {
+  teamsCreated.forEach((el) => {
     teamsIDsArray.push(el.id);
   });
 
   const nba = {};
   nba.name = 'NBA';
-  nba.teams = teams;
+  nba.teams = teamsCreated;
 
-  Team.create(nba);
+  await Team.create(nba);
 
   console.log('Done! data is ready now!');
 };
