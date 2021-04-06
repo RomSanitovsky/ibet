@@ -15,6 +15,8 @@ const leagueRouter = require('./routs/leagueRoutes');
 const teamsRouter = require('./routs/teamRoutes');
 const algoRouter = require('./routs/algoRoutes');
 
+const GroupData = require('./models/groupDataModel');
+
 const app = express();
 
 // 1) Global Middlewares

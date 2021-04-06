@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 
 const userBetSchema = new mongoose.Schema({
+  gameId: {
+    type: String,
+    required: [true, 'userBet muse have a game id'],
+  },
   finalMatchWinner: {
     type: Number,
     required: [true, 'userBetSchema must have an FinalMatchWinner'],
