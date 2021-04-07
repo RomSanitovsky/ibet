@@ -2,8 +2,9 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const User = require('./userModel');
 const League = require('./leagueModel');
-const PointsFormat = require('./pointsFormatModel');
-const GroupData = require('./groupDataModel');
+const pointsFormatSchema = require('./pointsFormatModel').pointsFormatSchema;
+const groupDataSchema = require('./groupDataModel').groupDataSchema;
+const { data } = require('nba');
 
 const groupSchema = new mongoose.Schema({
   groupName: {
@@ -21,9 +22,13 @@ const groupSchema = new mongoose.Schema({
     {
       type: mongoose.Schema.ObjectId,
       ref: 'User',
-      required: true,
+      default: [],
     },
   ],
+  data: {
+    type: groupDataSchema,
+    required: true,
+  },
 
   league: {
     type: mongoose.Schema.ObjectId,
@@ -31,12 +36,7 @@ const groupSchema = new mongoose.Schema({
     required: true,
   },
   pointsFormat: {
-    type: PointsFormat,
-    required: true,
-  },
-  groupData: {
-    type: mongoose.Schema.ObjectId,
-    ref: 'GroupData',
+    type: pointsFormatSchema,
     required: true,
   },
 
@@ -47,17 +47,13 @@ const groupSchema = new mongoose.Schema({
   },
 });
 
-groupSchema.pre(/^find/, function (next) {
-  this.populate('pointsFormat').populate('groupData');
-
-  next();
-});
-
 groupSchema.methods.calcPoint = async (user_id) => {
   var points = 0;
-  var userBets = this.groupData[user_id];
-  if (userBets) {
-  }
+  this.users.forEach((element) => {
+    var bets = data.userGroupBets.find((user_group_bets) => {
+      return user_group_bets.user == element;
+    });
+  });
 };
 
 const Group = mongoose.model('Group', groupSchema);

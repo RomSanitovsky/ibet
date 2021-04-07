@@ -1,11 +1,19 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
+const userBetSchema = require('./userBetInfoModel');
 
 const groupDataSchema = new mongoose.Schema({
-  data: {
-    type: Object,
-    default: {},
-  },
+  userGroupBets: [
+    {
+      user: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'User',
+        required: true,
+      },
+      userBets: [{ type: userBetSchema, default: [] }],
+      default: [],
+    },
+  ],
 
   active: {
     type: Boolean,
@@ -15,7 +23,7 @@ const groupDataSchema = new mongoose.Schema({
 });
 
 const GroupData = mongoose.model('GroupData', groupDataSchema);
-module.exports = GroupData;
+module.exports = { GroupData, groupDataSchema };
 
 // GroupData = [
 //     user_id = {

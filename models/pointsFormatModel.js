@@ -33,5 +33,5 @@ const pointsFormatSchema = new mongoose.Schema({
   },
 });
 
-const PointsFormat = mongoose.model('PointsFormat', PointsFormat);
-module.exports = PointsFormat;
+const PointsFormat = mongoose.model('PointsFormat', pointsFormatSchema);
+module.exports = { PointsFormat, pointsFormatSchema };

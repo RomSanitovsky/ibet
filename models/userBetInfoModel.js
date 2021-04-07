@@ -29,13 +29,6 @@ const userBetSchema = new mongoose.Schema({
       message: 'totalPoints must be greater or equal to 0',
     },
   },
-
-  active: {
-    type: Boolean,
-    default: true,
-    select: false,
-  },
 });
 
-const UserBetInfo = mongoose.model('UserBetInfo', userBetSchema);
-module.exports = UserBetInfo;
+module.exports = userBetSchema;
