@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.use(authController.protect);
 
-//router.get('/:id', groupController.getGroup);
+router.get('/:id', groupController.getGroup);
 router.post('/', groupController.createGroup);
 
 module.exports = router;
