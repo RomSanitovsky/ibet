@@ -10,5 +10,6 @@ router.use(authController.protect);
 router.get('/share/:id', groupController.shareGroup);
 router.get('/:id', groupController.getGroup);
 router.post('/', groupController.createGroup);
+router.post('/join', groupController.joinGroup);
 
 module.exports = router;
