@@ -10,6 +10,13 @@ exports.createGroup = catchAsync(async (req, res, next) => {
   console.log(user);
   body.adminUser = user._id;
   body.users = [user._id];
+  body.data = {
+    userGroupBets: [
+      {
+        user: user._id,
+      },
+    ],
+  };
 
   group = await Group.create(body);
 
