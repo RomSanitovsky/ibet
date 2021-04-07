@@ -1,3 +1,4 @@
+const fs = require('fs');
 const mongoose = require('mongoose');
 const validator = require('validator');
 const User = require('./userModel');
@@ -47,12 +48,27 @@ const groupSchema = new mongoose.Schema({
   },
 });
 
+const checkPoints = function (userBet , gameInfo ,pointFormat ) {
+
+};
+
 groupSchema.methods.calcPoint = async (user_id) => {
+  const games = JSON.parse(fs.readFileSync(`${__dirname}/../getExampleGames.json`));
   var points = 0;
-  this.users.forEach((element) => {
+  this.users.forEach((user) => {
     var bets = data.userGroupBets.find((user_group_bets) => {
-      return user_group_bets.user == element;
+      return user_group_bets.user == user;
     });
+    bets.userBets.forEach(userBet => {
+      var gameId = el.gameId;
+      var gameInfo = games.find(game => game.gameId == gameId);
+      if (gameInfo.statusGame == 'Finished'){
+        points += checkPoints(userBet, gameInfo , this.pointFormat);
+      }
+    });
+
+    
+
   });
 };
 
