@@ -1,6 +1,8 @@
 const fs = require('fs');
 const mongoose = require('mongoose');
 const validator = require('validator');
+const crypto = require('crypto');
+
 const User = require('./userModel');
 const League = require('./leagueModel');
 const pointsFormatSchema = require('./pointsFormatModel').pointsFormatSchema;
@@ -38,6 +40,13 @@ const groupSchema = new mongoose.Schema({
     required: true,
   },
 
+  groupToken: {
+    type: String,
+    default: function () {
+      const resetToken = crypto.randomBytes(4).toString('hex');
+      return crypto.createHash('sha256').update(resetToken).digest('hex');
+    },
+  },
   active: {
     type: Boolean,
     default: true,
