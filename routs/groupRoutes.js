@@ -7,6 +7,7 @@ const router = express.Router();
 
 router.use(authController.protect);
 
+router.get('share/:id', groupController.shareGroup);
 router.get('/:id', groupController.getGroup);
 router.post('/', groupController.createGroup);
 
