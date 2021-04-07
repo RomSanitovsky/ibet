@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
+const Group = require('./groupModel');
 
 const userSchema = new mongoose.Schema({
   userName: {
@@ -15,6 +16,11 @@ const userSchema = new mongoose.Schema({
     unique: [true],
     lowercase: [true],
     validate: [validator.isEmail, 'Please provide a valid email'],
+  },
+  groups: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'Group',
+    default: [],
   },
   role: {
     type: String,

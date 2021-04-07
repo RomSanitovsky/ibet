@@ -14,6 +14,7 @@ const userRouter = require('./routs/userRoutes');
 const leagueRouter = require('./routs/leagueRoutes');
 const teamsRouter = require('./routs/teamRoutes');
 const algoRouter = require('./routs/algoRoutes');
+const groupRouter = require('./routs/groupRoutes');
 
 const GroupData = require('./models/groupDataModel');
 
@@ -70,6 +71,7 @@ app.use('/api/algo', algoRouter);
 app.use('/api/users', userRouter);
 app.use('/api/league', leagueRouter);
 app.use('/api/teams', teamsRouter);
+app.use('/api/groups', groupRouter);
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));

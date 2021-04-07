@@ -11,14 +11,15 @@ const userGroupBetsSchema = new mongoose.Schema({
   },
 
   currentScore: {
-      type : Number,
-      default : 0,
-      validate: {
-        //this only works on creat OR save!!!
-        validator: function (el) {
-          return el>=0;
-        },
-        message: 'currentScore must be >= 0',
+    type: Number,
+    default: 0,
+    validate: {
+      //this only works on creat OR save!!!
+      validator: function (el) {
+        return el >= 0;
+      },
+      message: 'currentScore must be >= 0',
+    },
   },
 
   bets: [

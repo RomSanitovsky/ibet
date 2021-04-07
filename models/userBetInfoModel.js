@@ -20,7 +20,7 @@ const userBetSchema = new mongoose.Schema({
 
   totalPoints: {
     type: Number,
-    required: [true, 'userBetSchema must have an FinalMatchWinner'],
+    required: [true, 'userBetSchema must have an totalPoints'],
     validate: {
       //this only works on creat OR save!!!
       validator: function (el) {

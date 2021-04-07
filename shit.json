@@ -1,0 +1,40 @@
+{
+  "users": ["60684d08457cdd002f5d1e45"],
+  "active": true,
+  "_id": "606dc9c60fdcc62b00360a32",
+  "groupName": "Test Group",
+  "adminUser": "60684d08457cdd002f5d1e45",
+  "pointsFormat": {
+    "active": true,
+    "_id": "606dc9c60fdcc62b00360a33",
+    "FinalMatchWinner": 1,
+    "Total": 10
+  },
+  "data": {
+    "active": true,
+    "_id": "606dc9c60fdcc62b00360a34",
+    "userGroupBets": [
+      {
+        "currentScore": 0,
+        "default": [],
+        "_id": "606dc9c60fdcc62b00360a35",
+        "user": "60684d08457cdd002f5d1e45",
+        "userBets": [
+          {
+            "_id": "606dc9c60fdcc62b00360a36",
+            "gameId": "7960",
+            "finalMatchWinner": 1,
+            "totalPoints": 204
+          },
+          {
+            "_id": "606dc9c60fdcc62b00360a37",
+            "gameId": "7961",
+            "finalMatchWinner": 1,
+            "totalPoints": 200
+          }
+        ]
+      }
+    ]
+  },
+  "__v": 0
+}

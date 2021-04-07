@@ -5,13 +5,11 @@ const User = require('./userModel');
 const League = require('./leagueModel');
 const pointsFormatSchema = require('./pointsFormatModel').pointsFormatSchema;
 const groupDataSchema = require('./groupDataModel').groupDataSchema;
-const { data } = require('nba');
 
 const groupSchema = new mongoose.Schema({
   groupName: {
     type: String,
     required: [true, 'group must have an name'],
-    validate: [validator.isEmail, 'Please provide a valid email'],
   },
   adminUser: {
     type: mongoose.Schema.ObjectId,
@@ -34,7 +32,6 @@ const groupSchema = new mongoose.Schema({
   league: {
     type: mongoose.Schema.ObjectId,
     ref: 'League',
-    required: true,
   },
   pointsFormat: {
     type: pointsFormatSchema,
@@ -48,27 +45,52 @@ const groupSchema = new mongoose.Schema({
   },
 });
 
-const checkPoints = function (userBet , gameInfo ,pointFormat ) {
+const checkPoints = function (userBet, gameInfo, pointFormat) {
+  var total = 0;
+  if (
+    userBet.finalMatchWinner == 1 &&
+    parseInt(gameInfo.hTeam.score.points) >
+      parseInt(gameInfo.vTeam.score.points)
+  ) {
+    total += pointFormat.FinalMatchWinner;
+  }
+  if (
+    userBet.finalMatchWinner == 2 &&
+    parseInt(gameInfo.hTeam.score.points) <
+      parseInt(gameInfo.vTeam.score.points)
+  ) {
+    total += pointFormat.FinalMatchWinner;
+  }
 
+  if (
+    userBet.totalPoints ==
+    parseInt(gameInfo.hTeam.score.points) +
+      parseInt(gameInfo.vTeam.score.points)
+  ) {
+    total += pointFormat.Total;
+  }
+
+  return total;
 };
 
-groupSchema.methods.calcPoint = async (user_id) => {
-  const games = JSON.parse(fs.readFileSync(`${__dirname}/../getExampleGames.json`));
+groupSchema.methods.calcPoints = async function (user_id) {
+  const games = JSON.parse(
+    fs.readFileSync(`${__dirname}/../getExampleGamesUpdated.json`)
+  ).games;
   var points = 0;
   this.users.forEach((user) => {
-    var bets = data.userGroupBets.find((user_group_bets) => {
-      return user_group_bets.user == user;
+    var bets = this.data.userGroupBets.find((user_group_bets) => {
+      return user_group_bets.user.toString() === user.toString();
     });
-    bets.userBets.forEach(userBet => {
-      var gameId = el.gameId;
-      var gameInfo = games.find(game => game.gameId == gameId);
-      if (gameInfo.statusGame == 'Finished'){
-        points += checkPoints(userBet, gameInfo , this.pointFormat);
+    bets.userBets.forEach((userBet) => {
+      var gameId = userBet.gameId;
+      var gameInfo = games.find((game) => game.gameId == gameId);
+      if (gameInfo.statusGame == 'Finished') {
+        points += checkPoints(userBet, gameInfo, this.pointsFormat);
       }
     });
-
-    
-
+    bets.currentScore = points;
+    points = 0;
   });
 };
 
