@@ -2,6 +2,7 @@ const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
 
 const Group = require('../models/groupModel');
+const User = require('../models/userModel');
 
 exports.createGroup = catchAsync(async (req, res, next) => {
   const { body, user } = req;
@@ -17,6 +18,8 @@ exports.createGroup = catchAsync(async (req, res, next) => {
 
   group = await Group.create(body);
 
+  user.groups.push(group._id);
+  await User.findByIdAndUpdate(user._id, user);
   res.status(200).json({
     status: 'success',
     group,
