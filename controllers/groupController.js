@@ -56,8 +56,10 @@ exports.shareGroup = catchAsync(async (req, res, next) => {
 
 exports.joinGroup = catchAsync(async (req, res, next) => {
   const { user } = req;
-  const group = await Group.findOne({ groupToken: req.body.groupToken });
 
+  console.log(req.body);
+  const group = await Group.findOne({ groupToken: req.body.groupToken });
+  console.log(group);
   user.groups.push(group._id);
   group.users.push(user._id);
 
