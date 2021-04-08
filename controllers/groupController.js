@@ -44,7 +44,7 @@ exports.getGroup = catchAsync(async (req, res, next) => {
 
 exports.shareGroup = catchAsync(async (req, res, next) => {
   const { user } = req;
-  const group = await Group.findById(req.params.id);
+  const group = await Group.findById(req.params.id).select('groupToken');
   if (!group.adminUser.equals(user._id)) {
     return next(
       new AppError('You are not the admin of this group! Access denied!', 403)

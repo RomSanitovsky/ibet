@@ -43,6 +43,7 @@ const groupSchema = new mongoose.Schema({
   groupToken: {
     type: String,
     required: true,
+    select: false,
   },
   active: {
     type: Boolean,
