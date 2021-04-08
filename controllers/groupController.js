@@ -15,6 +15,7 @@ exports.createGroup = catchAsync(async (req, res, next) => {
       },
     ],
   };
+  body.groupToken = crypto.randomBytes(8).toString('hex');
 
   group = await Group.create(body);
 
