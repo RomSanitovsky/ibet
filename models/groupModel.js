@@ -42,9 +42,7 @@ const groupSchema = new mongoose.Schema({
 
   groupToken: {
     type: String,
-    default: function () {
-      return crypto.randomBytes(8).toString('hex');
-    },
+    default: crypto.randomBytes(8).toString('hex'),
   },
   active: {
     type: Boolean,
