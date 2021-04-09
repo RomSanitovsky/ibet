@@ -103,3 +103,4 @@ groupSchema.methods.calcPoints = async function (user_id) {
 
 const Group = mongoose.model('Group', groupSchema);
 module.exports = Group;
+//
