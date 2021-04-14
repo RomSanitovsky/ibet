@@ -72,3 +72,18 @@ exports.joinGroup = catchAsync(async (req, res, next) => {
     status: 'success',
   });
 });
+
+exports.addNewBet = catchAsync(async (req, res, next) => {
+  const { user } = req;
+  const group = await Group.findById(req.params.id);
+  if (
+    group.data.userGroupBets.find((user) => {
+      return user.user == user;
+    })
+  ) {
+  }
+
+  res.status(200).json({
+    status: 'success',
+  });
+});

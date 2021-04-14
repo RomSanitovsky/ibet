@@ -11,5 +11,6 @@ router.get('/share/:id', groupController.shareGroup);
 router.get('/:id', groupController.getGroup);
 router.post('/', groupController.createGroup);
 router.post('/join', groupController.joinGroup);
+router.post('/:id/newbet', groupController.addNewBet);
 
 module.exports = router;

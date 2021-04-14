@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 const axios = require('axios');
 const League = require('../models/leagueModel');
 const Team = require('../models/teamModel');
+const upcomingGames = require('../models/upcomingGamesModel');
 
 const DB = process.env.DATABASE.replace(
   '<password>',
@@ -68,6 +69,7 @@ const dataMaker = async () => {
   try {
     await League.deleteMany();
     await Team.deleteMany();
+    await upcomingGames.deleteMany();
   } catch (err) {
     console.log(err);
   }
@@ -153,6 +155,28 @@ const dataMaker = async () => {
   nba.teams = teamsCreated;
 
   await League.create(nba);
+
+  console.log('creating upcoming games');
+
+  var nowDate = new Date();
+  const upcoming = [];
+  games.games.forEach((game) => {
+    if (game.statusGame != 'Finished') {
+      var gameDate = new Date(game.startTimeUTC);
+      const diffTime = Math.abs(date2 - date1);
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      if (diffDays < 7) {
+        const upcomingGame = {};
+        upcomingGame.gameId = game.gameId;
+        upcomingGame.hTeam = game.hTeam;
+        upcomingGame.vTeam = game.vTeam;
+        upcomingGame.date = gameDate;
+        upcoming.push({ ...upcomingGame });
+      }
+    }
+  });
+
+  await upcomingGames.create(upcoming);
 
   console.log('Done! data is ready now!');
 };
