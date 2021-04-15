@@ -84,7 +84,7 @@ exports.addNewBet = catchAsync(async (req, res, next) => {
   const thisUserGroupBetsIndex = group.data.userGroupBets.findIndex((userG) => {
     console.log(userG);
     console.log(user);
-    return userG.user == user._id;
+    return userG.user.toString() == user._id.toString();
   });
 
   console.log(thisUserGroupBetsIndex);
