@@ -29,6 +29,7 @@ const groupSchema = new mongoose.Schema({
   data: {
     type: groupDataSchema,
     required: true,
+    default: [],
   },
 
   league: {

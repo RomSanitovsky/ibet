@@ -22,7 +22,6 @@ const groupDataSchema = new mongoose.Schema({
         },
       },
       userBets: [{ type: userBetSchema, default: [] }],
-      default: [],
     },
   ],
 
