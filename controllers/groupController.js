@@ -85,7 +85,10 @@ exports.addNewBet = catchAsync(async (req, res, next) => {
     (user) => user.user == user
   );
 
+  console.log(thisUserGroupBetsIndex);
+
   if (thisUserGroupBetsIndex) {
+    console.log(group.data.userGroupBets[thisUserGroupBetsIndex]);
     group.data.userGroupBets[thisUserGroupBetsIndex].userBets.push(userBet);
   } else {
     group.data.userGroupBets.push({ user: user._id, userBets: [userBet] });
