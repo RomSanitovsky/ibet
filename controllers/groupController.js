@@ -81,7 +81,7 @@ exports.addNewBet = catchAsync(async (req, res, next) => {
   userBet.gameId = req.body.gameId;
 
   const group = await Group.findById(req.params.id);
-  const thisUserGroupBetsIndex = group.data.userGroupBets.findIndeux(
+  const thisUserGroupBetsIndex = group.data.userGroupBets.findIndex(
     (user) => user.user == user
   );
 
