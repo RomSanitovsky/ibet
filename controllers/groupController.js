@@ -96,6 +96,8 @@ exports.addNewBet = catchAsync(async (req, res, next) => {
     group.data.userGroupBets.push({ user: user._id, userBets: [userBet] });
   }
 
+  await Group.findByIdAndUpdate(group._id, group);
+
   res.status(200).json({
     status: 'success',
   });
