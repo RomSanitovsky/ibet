@@ -87,7 +87,7 @@ exports.addNewBet = catchAsync(async (req, res, next) => {
 
   console.log(thisUserGroupBetsIndex);
 
-  if (thisUserGroupBetsIndex) {
+  if (thisUserGroupBetsIndex != -1) {
     console.log(group.data.userGroupBets[thisUserGroupBetsIndex]);
     group.data.userGroupBets[thisUserGroupBetsIndex].userBets.push(userBet);
   } else {
