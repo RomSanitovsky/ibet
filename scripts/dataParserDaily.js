@@ -163,7 +163,7 @@ const dataMaker = async () => {
   games.games.forEach((game) => {
     if (game.statusGame != 'Finished') {
       var gameDate = new Date(game.startTimeUTC);
-      const diffTime = Math.abs(date2 - date1);
+      const diffTime = Math.abs(gameDate - nowDate);
       const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
       if (diffDays < 7) {
         const upcomingGame = {};
