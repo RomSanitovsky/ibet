@@ -75,12 +75,20 @@ exports.joinGroup = catchAsync(async (req, res, next) => {
 
 exports.addNewBet = catchAsync(async (req, res, next) => {
   const { user } = req;
+  const userBet = {};
+  userBet.finalMatchWinner = req.body.finalMatchWinner;
+  userBet.totalPoints = req.body.totalPoints;
+  userBet.gameId = req.body.gameId;
+
   const group = await Group.findById(req.params.id);
-  if (
-    group.data.userGroupBets.find((user) => {
-      return user.user == user;
-    })
-  ) {
+  const thisUserGroupBetsIndex = group.data.userGroupBets.findIndeux(
+    (user) => user.user == user
+  );
+
+  if (thisUserGroupBetsIndex) {
+    group.data.userGroupBets[thisUserGroupBetsIndex].userBets.push(userBet);
+  } else {
+    group.data.userGroupBets.push({ user: user._id, userBets: [userBet] });
   }
 
   res.status(200).json({
