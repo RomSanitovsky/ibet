@@ -176,7 +176,7 @@ const dataMaker = async () => {
     }
   });
 
-  await upcomingGames.create(upcoming);
+  await upcomingGames.create({ games: upcoming });
 
   console.log('Done! data is ready now!');
 };
