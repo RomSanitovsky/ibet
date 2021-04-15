@@ -168,8 +168,8 @@ const dataMaker = async () => {
       if (diffDays < 7) {
         const upcomingGame = {};
         upcomingGame.gameId = game.gameId;
-        upcomingGame.hTeam = game.hTeam;
-        upcomingGame.vTeam = game.vTeam;
+        upcomingGame.hTeam = game.hTeam.fullName;
+        upcomingGame.vTeam = game.vTeam.fullName;
         upcomingGame.date = gameDate;
         upcoming.push({ ...upcomingGame });
       }
