@@ -191,7 +191,7 @@ const dataMaker = async () => {
 
   await upcomingGames.create({ games: upcoming });
 
-  setTimeout(dataMaker, 1000 * 60 * 60 * 12);
+  setTimeout(dataMaker, 1000 * 60 * 60 * 3);
 
   console.log('Done! data is ready now!');
 };
