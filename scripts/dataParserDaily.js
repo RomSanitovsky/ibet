@@ -6,7 +6,7 @@ const axios = require('axios');
 const League = require('../models/leagueModel');
 const Team = require('../models/teamModel');
 const upcomingGames = require('../models/upcomingGamesModel');
-const email = require('./utils/email');
+const email = require('../utils/email');
 
 const DB = process.env.DATABASE.replace(
   '<password>',
