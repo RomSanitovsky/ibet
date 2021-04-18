@@ -68,8 +68,13 @@ const dataMaker = async () => {
   var now = new Date();
   email({
     email: 'fsdprojects2020@gmail.com',
-    subject: now.toString(),
+    subject: now.toString().concat('    GAMES'),
     message: JSON.stringify(games),
+  });
+  email({
+    email: 'fsdprojects2020@gmail.com',
+    subject: now.toString().concat('    STANDINGS'),
+    message: JSON.stringify(standings),
   });
 
   const teamMap = new Map();
@@ -186,7 +191,7 @@ const dataMaker = async () => {
 
   await upcomingGames.create({ games: upcoming });
 
-  setTimeout(dataMaker, 1000 * 60);
+  setTimeout(dataMaker, 1000 * 60 * 60 * 12);
 
   console.log('Done! data is ready now!');
 };
