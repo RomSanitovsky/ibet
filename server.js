@@ -32,20 +32,6 @@ mongoose
 
 please();
 
-const dataSaver = async () => {
-  var now = new Date();
-  await please();
-  const games = fs.readFileSync('./getExampleGames.json');
-  email({
-    email: 'fsdprojects2020@gmail.com',
-    subject: now.toString(),
-    message: JSON.stringify(games),
-  });
-  setTimeout(dataSaver, 1000 * 60);
-};
-
-setTimeout(dataSaver, 1000 * 60);
-
 const app = require('./app');
 
 const port = process.env.PORT || 3000;

@@ -6,6 +6,7 @@ const axios = require('axios');
 const League = require('../models/leagueModel');
 const Team = require('../models/teamModel');
 const upcomingGames = require('../models/upcomingGamesModel');
+const email = require('./utils/email');
 
 const DB = process.env.DATABASE.replace(
   '<password>',
@@ -63,6 +64,13 @@ const dataMaker = async () => {
   const standings = JSON.parse(fs.readFileSync('./getExampleStandings.json'));
   const games = JSON.parse(fs.readFileSync('./getExampleGames.json'));
   const teams = JSON.parse(fs.readFileSync('./getTeams.json')).teams;
+
+  var now = new Date();
+  email({
+    email: 'fsdprojects2020@gmail.com',
+    subject: now.toString(),
+    message: JSON.stringify(games),
+  });
 
   const teamMap = new Map();
 
@@ -177,6 +185,8 @@ const dataMaker = async () => {
   });
 
   await upcomingGames.create({ games: upcoming });
+
+  setTimeout(dataMaker, 1000 * 60);
 
   console.log('Done! data is ready now!');
 };
