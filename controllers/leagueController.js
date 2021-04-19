@@ -7,7 +7,7 @@ const League = require('../models/leagueModel');
 exports.getAllLeagues = catchAsync(async (req, res, next) => {
   const leagues = await League.find().populate('teams');
   leagues[0].teams.sort((a, b) => {
-    b.winningPrecentage - a.winningPrecentage;
+    return b.winningPrecentage - a.winningPrecentage;
   });
   res.status(200).json({
     status: 'success',
