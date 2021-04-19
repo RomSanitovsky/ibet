@@ -108,7 +108,9 @@ const dataMaker = async () => {
     results[i].losses = standings.standings[i].loss;
     results[i].remaning = 72 - results[i].wins - results[i].losses;
     results[i].winningPrecentage =
-      results[i].wins / (results[i].wins + results[i].losses);
+      Math.round(
+        (results[i].wins / (results[i].wins + results[i].losses)) * 100
+      ) / 100;
     await Team.create(results[i]);
     for (let j = 0; j <= 30; j++) {
       results[i][j] = 0;
