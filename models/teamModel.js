@@ -19,6 +19,10 @@ const teamSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  winningPrecentage: {
+    type: Number,
+    required: true,
+  },
   active: {
     type: Boolean,
     default: true,

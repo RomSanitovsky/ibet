@@ -5,9 +5,14 @@ const factory = require('./handlerFactory');
 const League = require('../models/leagueModel');
 
 exports.getAllLeagues = catchAsync(async (req, res, next) => {
-  const leagues = await League.find();
-  leagues.forEach(function (element, index, theArray) {
-    theArray[index] = 'hello world';
+  const leagues = await League.find().populate('teams');
+  leagues[0].teams.sort((a, b) => {
+    a.winningPrecentage - b.winningPrecentage;
+  });
+  res.status(200).json({
+    status: 'success',
+    results: leagues.length,
+    data: leagues,
   });
 });
 exports.getLeague = factory.getOne(League);
