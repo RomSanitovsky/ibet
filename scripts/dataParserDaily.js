@@ -109,7 +109,7 @@ const dataMaker = async () => {
     results[i].remaning = 72 - results[i].wins - results[i].losses;
     console.log(results[i].wins);
     console.log(results[i].losses);
-
+    console.log(results[i].wins + results[i].losses);
     console.log(results[i].wins / (results[i].wins + results[i].losses));
     results[i].winningPrecentage =
       Math.round(
