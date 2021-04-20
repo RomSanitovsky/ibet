@@ -180,19 +180,24 @@ const dataMaker = async () => {
   var nowDate = new Date();
   const upcoming = [];
   games.games.forEach((game) => {
+    var gameDate = new Date(game.startTimeUTC);
+    const diffTime = Math.abs(gameDate - nowDate);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    const upcomingGame = {};
+    upcomingGame.gameId = game.gameId;
+    upcomingGame.hTeam = game.hTeam.fullName;
+    upcomingGame.vTeam = game.vTeam.fullName;
+    upcomingGame.date = gameDate;
     if (game.statusGame != 'Finished') {
-      var gameDate = new Date(game.startTimeUTC);
-      const diffTime = Math.abs(gameDate - nowDate);
-      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
       if (diffDays < 7) {
-        const upcomingGame = {};
-        upcomingGame.gameId = game.gameId;
-        upcomingGame.hTeam = game.hTeam.fullName;
-        upcomingGame.vTeam = game.vTeam.fullName;
-        upcomingGame.date = gameDate;
-        upcoming.push({ ...upcomingGame });
+        upcomingGame.status = 'ThisWeek';
+      } else {
+        upcomingGame.status = 'NotYet';
       }
+    } else {
+      upcomingGame.status = 'Finished';
     }
+    upcoming.push({ ...upcomingGame });
   });
 
   await upcomingGames.create({ games: upcoming });
