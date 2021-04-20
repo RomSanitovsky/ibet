@@ -12,7 +12,7 @@ const upcomingGamesSchema = new mongoose.Schema({
         status: {
           type: String,
           required: true,
-          enum: ['Finished , ThisWeek', 'NotYet'],
+          enum: ['Finished', 'ThisWeek', 'NotYet'],
         },
       },
     ],
