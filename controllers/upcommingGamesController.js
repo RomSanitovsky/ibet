@@ -6,7 +6,9 @@ const User = require('../models/userModel');
 
 exports.getUpcommingGames = catchAsync(async (req, res, next) => {
   const result = await upcomingGames.findOne();
-
+  result.sort((a, b) => {
+    return new date(a.date) - new date(b.date);
+  });
   res.status(200).json({
     status: 'success',
     result,
