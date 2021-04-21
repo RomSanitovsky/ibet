@@ -197,8 +197,8 @@ const dataMaker = async () => {
       }
     } else {
       upcomingGame.status = 'Finished';
-      upcomingGame.hScore = ParseInt(game.hTeam.score.points);
-      upcomingGame.vScore = ParseInt(game.vTeam.score.points);
+      upcomingGame.hScore = parseInt(game.hTeam.score.points);
+      upcomingGame.vScore = parseInt(game.vTeam.score.points);
     }
     upcoming.push({ ...upcomingGame });
   });
