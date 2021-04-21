@@ -36,6 +36,7 @@ exports.getGroup = catchAsync(async (req, res, next) => {
       new AppError('You are not a part of this group! Access denied!', 403)
     );
   }
+  group.calcPoints();
   res.status(200).json({
     status: 'success',
     group,

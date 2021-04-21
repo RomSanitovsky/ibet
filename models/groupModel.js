@@ -82,9 +82,7 @@ const checkPoints = function (userBet, gameInfo, pointFormat) {
 };
 
 groupSchema.methods.calcPoints = async function (user_id) {
-  const games = JSON.parse(
-    fs.readFileSync(`${__dirname}/../getExampleGamesUpdated.json`)
-  ).games;
+  const games = JSON.parse(fs.readFileSync('./getExampleGames.json')).games;
   var points = 0;
   this.users.forEach((user) => {
     var bets = this.data.userGroupBets.find((user_group_bets) => {
