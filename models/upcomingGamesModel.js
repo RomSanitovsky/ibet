@@ -8,6 +8,8 @@ const upcomingGamesSchema = new mongoose.Schema({
         gameId: { type: String, required: true },
         hTeam: { type: String, required: true },
         vTeam: { type: String, required: true },
+        hScore: { type: Number, required: true, default: 0 },
+        vScore: { type: Number, required: true, default: 0 },
         date: { type: Date, required: true },
         status: {
           type: String,

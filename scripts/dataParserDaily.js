@@ -187,6 +187,7 @@ const dataMaker = async () => {
     upcomingGame.gameId = game.gameId;
     upcomingGame.hTeam = game.hTeam.fullName;
     upcomingGame.vTeam = game.vTeam.fullName;
+
     upcomingGame.date = gameDate;
     if (game.statusGame != 'Finished') {
       if (diffDays < 7) {
@@ -196,6 +197,8 @@ const dataMaker = async () => {
       }
     } else {
       upcomingGame.status = 'Finished';
+      upcomingGame.hScore = ParseInt(game.hTeam.score.points);
+      upcomingGame.vScore = ParseInt(game.vTeam.score.points);
     }
     upcoming.push({ ...upcomingGame });
   });
