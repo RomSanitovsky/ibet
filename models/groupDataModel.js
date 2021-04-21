@@ -10,6 +10,10 @@ const groupDataSchema = new mongoose.Schema({
         ref: 'User',
         required: true,
       },
+      userName: {
+        type: String,
+        required: true,
+      },
       currentScore: {
         type: Number,
         default: 0,

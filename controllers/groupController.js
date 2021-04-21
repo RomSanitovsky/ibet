@@ -13,6 +13,7 @@ exports.createGroup = catchAsync(async (req, res, next) => {
     userGroupBets: [
       {
         user: user._id,
+        userName: user.userName,
       },
     ],
   };
@@ -65,6 +66,7 @@ exports.joinGroup = catchAsync(async (req, res, next) => {
   console.log(group);
   user.groups.push(group._id);
   group.users.push(user._id);
+  group.data.userGroupBets.push({ user: user._id, userName: user.userName });
 
   await User.findByIdAndUpdate(user._id, user);
   await Group.findByIdAndUpdate(group._id, group);
