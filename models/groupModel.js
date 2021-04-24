@@ -32,6 +32,10 @@ const groupSchema = new mongoose.Schema({
     default: [],
   },
 
+  logo: {
+    type: String,
+  },
+
   league: {
     type: mongoose.Schema.ObjectId,
     ref: 'League',

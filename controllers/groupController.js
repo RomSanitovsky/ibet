@@ -4,6 +4,7 @@ const crypto = require('crypto');
 
 const Group = require('../models/groupModel');
 const User = require('../models/userModel');
+const { getPriority } = require('os');
 
 exports.createGroup = catchAsync(async (req, res, next) => {
   const { body, user } = req;
@@ -99,6 +100,25 @@ exports.addNewBet = catchAsync(async (req, res, next) => {
     group.data.userGroupBets.push({ user: user._id, userBets: [userBet] });
   }
 
+  await Group.findByIdAndUpdate(group._id, group);
+
+  res.status(200).json({
+    status: 'success',
+  });
+});
+
+exports.setLogo = catchAsync(async (req, res, next) => {
+  const { user } = req;
+  const { logo } = req.body;
+
+  const group = await Group.findById(req.params.id);
+
+  if (!group.adminUser.equals(user._id)) {
+    return next(
+      new AppError('You are not the admin of this group! Access denied!', 403)
+    );
+  }
+  group.logo = logo;
   await Group.findByIdAndUpdate(group._id, group);
 
   res.status(200).json({
