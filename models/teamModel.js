@@ -23,6 +23,9 @@ const teamSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  logo: {
+    type: String,
+  },
   active: {
     type: Boolean,
     default: true,

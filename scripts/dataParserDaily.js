@@ -102,6 +102,7 @@ const dataMaker = async () => {
     teams.forEach((team) => {
       if (team.teamId === results[i].apiId) {
         results[i].teamName = team.fullName;
+        results[i].logo = team.logo;
       }
     });
     results[i].wins = standings.standings[i].win;
