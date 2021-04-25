@@ -33,6 +33,11 @@ exports.createGroup = catchAsync(async (req, res, next) => {
 exports.getGroup = catchAsync(async (req, res, next) => {
   const { user } = req;
   const group = await Group.findById(req.params.id);
+  if (!group){
+    return next(
+      new AppError('there is not such group!', 401)
+    );
+  }
   if (!group.users.includes(user._id)) {
     return next(
       new AppError('You are not a part of this group! Access denied!', 403)
