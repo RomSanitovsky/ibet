@@ -186,14 +186,6 @@ const dataMaker = async () => {
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     const upcomingGame = {};
     upcomingGame.gameId = game.gameId;
-    upcomingGame.hTeam = teamsCreated.find((el) => {
-      console.log(el);
-      console.log(game.hTeam.fullName);
-      return el.teamName == game.hTeam.fullName;
-    })._id;
-    upcomingGame.vTeam = teamsCreated.find(
-      (el) => el.teamName == game.vTeam.fullName
-    )._id;
 
     upcomingGame.date = gameDate;
     if (game.statusGame != 'Finished') {
@@ -207,7 +199,17 @@ const dataMaker = async () => {
       upcomingGame.hScore = parseInt(game.hTeam.score.points);
       upcomingGame.vScore = parseInt(game.vTeam.score.points);
     }
-    upcoming.push({ ...upcomingGame });
+    const hometeam = teamsCreated.find((el) => {
+      return el.teamName == game.hTeam.fullName;
+    });
+    const awayteam = teamsCreated.find(
+      (el) => el.teamName == game.vTeam.fullName
+    );
+    if (hometeam && awayteam) {
+      upcomingGame.hTeam = hometeam._id;
+      upcomingGame.vTeam = awayteam._id;
+      upcoming.push({ ...upcomingGame });
+    }
   });
 
   await upcomingGames.create({ games: upcoming });
