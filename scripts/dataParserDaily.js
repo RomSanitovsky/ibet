@@ -186,8 +186,14 @@ const dataMaker = async () => {
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     const upcomingGame = {};
     upcomingGame.gameId = game.gameId;
-    upcomingGame.hTeam = teamsCreated.find(el => el.teamName==game.hTeam.fullName)._id;
-    upcomingGame.vTeam = teamsCreated.find(el => el.teamName==game.vTeam.fullName)._id;;
+    upcomingGame.hTeam = teamsCreated.find((el) => {
+      console.log(el);
+      console.log(game.hTeam.fullName);
+      return el.teamName == game.hTeam.fullName;
+    })._id;
+    upcomingGame.vTeam = teamsCreated.find(
+      (el) => el.teamName == game.vTeam.fullName
+    )._id;
 
     upcomingGame.date = gameDate;
     if (game.statusGame != 'Finished') {
