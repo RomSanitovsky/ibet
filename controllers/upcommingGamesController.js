@@ -5,7 +5,7 @@ const upcomingGames = require('../models/upcomingGamesModel');
 const User = require('../models/userModel');
 
 exports.getUpcommingGames = catchAsync(async (req, res, next) => {
-  const result = await upcomingGames.findOne();
+  const result = await upcomingGames.findOne(); //TODO : populate teams
   result.games.sort((a, b) => {
     return new Date(a.date) - new Date(b.date);
   });
