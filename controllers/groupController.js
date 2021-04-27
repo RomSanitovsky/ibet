@@ -104,11 +104,16 @@ exports.addNewBet = catchAsync(async (req, res, next) => {
       group.data.userGroupBets[thisUserGroupBetsIndex].userBets[
         betIndex
       ] = userBet;
+      console.log('1');
     } else {
       group.data.userGroupBets[thisUserGroupBetsIndex].userBets.push(userBet);
+      console.log('2');
+
     }
   } else {
     group.data.userGroupBets.push({ user: user._id, userBets: [userBet] });
+    console.log('3');
+
   }
 
   await Group.findByIdAndUpdate(group._id, group);
