@@ -33,10 +33,8 @@ exports.createGroup = catchAsync(async (req, res, next) => {
 exports.getGroup = catchAsync(async (req, res, next) => {
   const { user } = req;
   const group = await Group.findById(req.params.id);
-  if (!group){
-    return next(
-      new AppError('there is not such group!', 401)
-    );
+  if (!group) {
+    return next(new AppError('there is not such group!', 401));
   }
   if (!group.users.includes(user._id)) {
     return next(
@@ -99,8 +97,16 @@ exports.addNewBet = catchAsync(async (req, res, next) => {
   console.log(thisUserGroupBetsIndex);
 
   if (thisUserGroupBetsIndex != -1) {
-    console.log(group.data.userGroupBets[thisUserGroupBetsIndex]);
-    group.data.userGroupBets[thisUserGroupBetsIndex].userBets.push(userBet);
+    const betIndex = group.data.userGroupBets[
+      thisUserGroupBetsIndex
+    ].userBets.find((el) => el.gameId == userBet.gameId);
+    if (betIndex != -1) {
+      group.data.userGroupBets[thisUserGroupBetsIndex].userBets[
+        betIndex
+      ] = userBet;
+    } else {
+      group.data.userGroupBets[thisUserGroupBetsIndex].userBets.push(userBet);
+    }
   } else {
     group.data.userGroupBets.push({ user: user._id, userBets: [userBet] });
   }
