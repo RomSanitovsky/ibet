@@ -163,7 +163,7 @@ exports.deleteBet = catchAsync(async (req, res, next) => {
   const betIndex = group.data.userGroupBets[
     thisUserGroupBetsIndex
   ].userBets.findIndex((el) => el.gameId == req.body.gameId);
-  if (betIndex != -1) {
+  if (betIndex == -1) {
     return next(
       new AppError('You do not bet on this game in this group!', 403)
     );
