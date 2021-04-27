@@ -99,7 +99,7 @@ exports.addNewBet = catchAsync(async (req, res, next) => {
   if (thisUserGroupBetsIndex != -1) {
     const betIndex = group.data.userGroupBets[
       thisUserGroupBetsIndex
-    ].userBets.find((el) => el.gameId == userBet.gameId);
+    ].userBets.findIndex((el) => el.gameId == userBet.gameId);
     if (betIndex != -1) {
       group.data.userGroupBets[thisUserGroupBetsIndex].userBets[
         betIndex
