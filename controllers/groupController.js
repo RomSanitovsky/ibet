@@ -83,18 +83,22 @@ exports.joinGroup = catchAsync(async (req, res, next) => {
 exports.addNewBet = catchAsync(async (req, res, next) => {
   const { user } = req;
   const userBet = {};
+
   userBet.finalMatchWinner = req.body.finalMatchWinner;
   userBet.totalPoints = req.body.totalPoints;
   userBet.gameId = req.body.gameId;
 
   const group = await Group.findById(req.params.id);
+  if (!group.users.includes(user._id)) {
+    return next(
+      new AppError('You are not a part of this group! Access denied!', 403)
+    );
+  }
   const thisUserGroupBetsIndex = group.data.userGroupBets.findIndex((userG) => {
     console.log(userG);
     console.log(user);
     return userG.user.toString() == user._id.toString();
   });
-
-  console.log(thisUserGroupBetsIndex);
 
   if (thisUserGroupBetsIndex != -1) {
     const betIndex = group.data.userGroupBets[
@@ -104,16 +108,11 @@ exports.addNewBet = catchAsync(async (req, res, next) => {
       group.data.userGroupBets[thisUserGroupBetsIndex].userBets[
         betIndex
       ] = userBet;
-      console.log('1');
     } else {
       group.data.userGroupBets[thisUserGroupBetsIndex].userBets.push(userBet);
-      console.log('2');
-
     }
   } else {
     group.data.userGroupBets.push({ user: user._id, userBets: [userBet] });
-    console.log('3');
-
   }
 
   await Group.findByIdAndUpdate(group._id, group);
@@ -135,6 +134,43 @@ exports.setLogo = catchAsync(async (req, res, next) => {
     );
   }
   group.logo = logo;
+  await Group.findByIdAndUpdate(group._id, group);
+
+  res.status(200).json({
+    status: 'success',
+  });
+});
+
+exports.deleteBet = catchAsync(async (req, res, next) => {
+  const { user } = req;
+
+  const group = await Group.findById(req.params.id);
+
+  if (!group.users.includes(user._id)) {
+    return next(
+      new AppError('You are not a part of this group! Access denied!', 403)
+    );
+  }
+
+  const thisUserGroupBetsIndex = group.data.userGroupBets.findIndex((userG) => {
+    return userG.user.toString() == user._id.toString();
+  });
+
+  if (thisUserGroupBetsIndex == -1) {
+    return next(new AppError('You do not have bets in this group!', 403));
+  }
+
+  const betIndex = group.data.userGroupBets[
+    thisUserGroupBetsIndex
+  ].userBets.findIndex((el) => el.gameId == req.body.gameId);
+  if (betIndex != -1) {
+    return next(
+      new AppError('You do not bet on this game in this group!', 403)
+    );
+  }
+
+  group.data.userGroupBets[thisUserGroupBetsIndex].userBets.splice(betIndex, 1);
+
   await Group.findByIdAndUpdate(group._id, group);
 
   res.status(200).json({

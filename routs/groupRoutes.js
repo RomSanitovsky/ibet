@@ -13,5 +13,6 @@ router.post('/', groupController.createGroup);
 router.post('/join', groupController.joinGroup);
 router.post('/:id/newbet', groupController.addNewBet);
 router.post('/:id/setlogo', groupController.setLogo);
+router.delete('/:id/deletebet', groupController.deleteBet);
 
 module.exports = router;
