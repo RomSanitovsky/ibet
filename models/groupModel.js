@@ -95,8 +95,10 @@ groupSchema.methods.calcPoints = async function (user_id) {
     bets.userBets.forEach((userBet) => {
       var gameId = userBet.gameId;
       var gameInfo = games.find((game) => game.gameId == gameId);
-      if (gameInfo.statusGame == 'Finished') {
-        points += checkPoints(userBet, gameInfo, this.pointsFormat);
+      if (gameInfo) {
+        if (gameInfo.statusGame == 'Finished') {
+          points += checkPoints(userBet, gameInfo, this.pointsFormat);
+        }
       }
     });
     bets.currentScore = points;
