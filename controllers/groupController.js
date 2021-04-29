@@ -177,3 +177,32 @@ exports.deleteBet = catchAsync(async (req, res, next) => {
     status: 'success',
   });
 });
+
+exports.deleteGroup = catchAsync(async (req, res, next) => {
+  const { user } = req;
+  const group = await Group.findById(req.params.id);
+
+  if (!group.adminUser.equals(user._id)) {
+    return next(
+      new AppError('You are not the admin of this group! Access denied!', 403)
+    );
+  }
+
+  const groupId = group._id;
+
+  const users = User.findByIdAndUpdate({ _id: { $in: group.users } });
+
+  for (groupUser in users) {
+    groupUser.groups.splice(
+      groupUser.groups.findIndex((el) => el.toString() == groupId.toString()),
+      1
+    );
+    await User.findByIdAndUpdate(groupUser._id, groupUser);
+  }
+
+  Group.findByIdAndDelete(groupId);
+
+  res.status(200).json({
+    status: 'success',
+  });
+});
