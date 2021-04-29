@@ -1,6 +1,7 @@
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
 const crypto = require('crypto');
+const mongoose = require('mongoose');
 
 const Group = require('../models/groupModel');
 const User = require('../models/userModel');
@@ -190,17 +191,20 @@ exports.deleteGroup = catchAsync(async (req, res, next) => {
 
   const groupId = group._id;
 
-  const users = User.findByIdAndUpdate({ _id: { $in: group.users } });
+  const users = await User.find({ _id: { $in: group.users } });
 
-  for (groupUser in users) {
-    groupUser.groups.splice(
-      groupUser.groups.findIndex((el) => el.toString() == groupId.toString()),
+  console.log('users:', users);
+
+  for (let i = 0; i < users.length; i++) {
+    console.log(users[i]);
+    users[i].groups.splice(
+      users[i].groups.findIndex((el) => el.toString() == groupId.toString()),
       1
     );
-    await User.findByIdAndUpdate(groupUser._id, groupUser);
+    await User.findByIdAndUpdate(users[i]._id, users[i]);
   }
 
-  Group.findByIdAndDelete(groupId);
+  await Group.findByIdAndDelete(groupId);
 
   res.status(200).json({
     status: 'success',
