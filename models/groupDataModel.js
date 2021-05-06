@@ -17,6 +17,7 @@ const groupDataSchema = new mongoose.Schema({
 
       teamChoice: {
         type: String,
+        default: '',
       },
 
       currentScore: {

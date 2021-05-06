@@ -220,12 +220,16 @@ exports.newTeamChoice = catchAsync(async (req, res, next) => {
       new AppError('You are not a part of this group! Access denied!', 403)
     );
   }
+
+  if (!req.body.teamChoice) {
+    return next(new AppError('no team choice!', 403));
+  }
   const thisUserGroupBetsIndex = group.data.userGroupBets.findIndex((userG) => {
     return userG.user.toString() == user._id.toString();
   });
 
   group.data.userGroupBets[thisUserGroupBetsIndex].teamChoice =
-    req.body.teamChoise;
+    req.body.teamChoice;
 
   await Group.findByIdAndUpdate(group._id, group);
 
