@@ -210,3 +210,26 @@ exports.deleteGroup = catchAsync(async (req, res, next) => {
     status: 'success',
   });
 });
+
+exports.newTeamChoice = catchAsync(async (req, res, next) => {
+  const { user } = req;
+
+  const group = await Group.findById(req.params.id);
+  if (!group.users.includes(user._id)) {
+    return next(
+      new AppError('You are not a part of this group! Access denied!', 403)
+    );
+  }
+  const thisUserGroupBetsIndex = group.data.userGroupBets.findIndex((userG) => {
+    return userG.user.toString() == user._id.toString();
+  });
+
+  group.data.userGroupBets[thisUserGroupBetsIndex].teamChoice =
+    req.body.teamChoise;
+
+  await Group.findByIdAndUpdate(group._id, group);
+
+  res.status(200).json({
+    status: 'success',
+  });
+});

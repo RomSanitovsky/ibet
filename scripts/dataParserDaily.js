@@ -114,11 +114,11 @@ const dataMaker = async () => {
           (parseInt(results[i].wins) + parseInt(results[i].losses))) *
           100
       ) / 100;
-    await Team.create(results[i]);
     for (let j = 0; j <= 30; j++) {
       results[i][j] = 0;
     }
   }
+  await Team.create(results);
   //getting remaining games
   for (let i = 0; i < 30; i++) {
     games.games.forEach((element) => {
@@ -214,7 +214,7 @@ const dataMaker = async () => {
 
   await upcomingGames.create({ games: upcoming });
 
-  setTimeout(dataMaker, 1000 * 60 * 60 * 3);
+  setTimeout(dataMaker, 1000 * 60 * 60 * 12);
 
   console.log('Done! data is ready now!');
 };

@@ -14,6 +14,11 @@ const groupDataSchema = new mongoose.Schema({
         type: String,
         required: true,
       },
+
+      teamChoice: {
+        type: String,
+      },
+
       currentScore: {
         type: Number,
         default: 0,
