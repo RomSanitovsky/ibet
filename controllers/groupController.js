@@ -52,9 +52,12 @@ exports.getGroup = catchAsync(async (req, res, next) => {
 exports.shareGroup = catchAsync(async (req, res, next) => {
   const { user } = req;
   const group = await Group.findById(req.params.id).select('+groupToken');
-  if (!group.adminUser.equals(user._id)) {
+  if (!group.users.includes(user._id)) {
     return next(
-      new AppError('You are not the admin of this group! Access denied!', 403)
+      new AppError(
+        'You must be a member of this group this group! Access denied!',
+        403
+      )
     );
   }
   res.status(200).json({
