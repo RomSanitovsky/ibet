@@ -68,6 +68,11 @@ exports.joinGroup = catchAsync(async (req, res, next) => {
 
   console.log(req.body);
   const group = await Group.findOne({ groupToken: req.body.groupToken });
+
+  if (group.users.includes(user._id)) {
+    return next(
+      new AppError('You are already in this group! Access denied!', 403)
+    );
   console.log(group);
   user.groups.push(group._id);
   group.users.push(user._id);
