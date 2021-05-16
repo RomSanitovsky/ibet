@@ -22,8 +22,10 @@ exports.goBack = catchAsync(async (req, res, next) => {
     );
 
   const teams = JSON.parse(fs.readFileSync('./getTeams.json')).teams;
-  const games = JSON.parse(fs.readFileSync('../data/games.json'));
-  const standings = JSON.parse(fs.readFileSync('../data/standings.json'));
+  const games = JSON.parse(fs.readFileSync(`${__dirname}/../data/games.json`));
+  const standings = JSON.parse(
+    fs.readFileSync(`${__dirname}/../data/standings.json`)
+  );
 
   var now = new Date();
 
@@ -163,6 +165,10 @@ exports.goBack = catchAsync(async (req, res, next) => {
   });
 
   await upcomingGames.create({ games: upcoming });
+
+  res.status(200).json({
+    status: 'success',
+  });
 });
 
 exports.goFront = catchAsync(async (req, res, next) => {
@@ -347,4 +353,8 @@ exports.goFront = catchAsync(async (req, res, next) => {
   });
 
   await upcomingGames.create({ games: upcoming });
+
+  res.status(200).json({
+    status: 'success',
+  });
 });
