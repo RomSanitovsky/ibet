@@ -25,6 +25,17 @@ const pointsFormatSchema = new mongoose.Schema({
       message: 'Total score method must be greater than 0',
     },
   },
+  LeagueWinner : {
+    type: String,
+    required: [true, 'PointsFormat must have a leaguewinner'],
+    validate: {
+      //this only works on creat OR save!!!
+      validator: function (el) {
+        return el > 0;
+      },
+      message: 'leaguewinner method must be greater than 0',
+    },
+  },
 
   active: {
     type: Boolean,
