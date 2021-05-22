@@ -23,6 +23,7 @@ exports.goBack = catchAsync(async (req, res, next) => {
 
   const teams = JSON.parse(fs.readFileSync('./getTeams.json')).teams;
   const games = JSON.parse(fs.readFileSync(`${__dirname}/../data/games.json`));
+  fs.writeFileSync('./getExampleGames.json', JSON.stringify(games));
   const standings = JSON.parse(
     fs.readFileSync(`${__dirname}/../data/standings.json`)
   );
