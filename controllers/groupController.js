@@ -237,6 +237,9 @@ exports.newTeamChoice = catchAsync(async (req, res, next) => {
     return userG.user.toString() == user._id.toString();
   });
 
+  if (group.data.userGroupBets[thisUserGroupBetsIndex].teamChoice){
+    return next(new AppError('team already chosen!', 403));
+  }
   group.data.userGroupBets[thisUserGroupBetsIndex].teamChoice =
     req.body.teamChoice;
 
