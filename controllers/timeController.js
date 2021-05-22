@@ -28,8 +28,6 @@ exports.goBack = catchAsync(async (req, res, next) => {
     fs.readFileSync(`${__dirname}/../data/standings.json`)
   );
 
-  var now = new Date();
-
   const teamMap = new Map();
 
   try {
@@ -131,7 +129,7 @@ exports.goBack = catchAsync(async (req, res, next) => {
 
   console.log('creating upcoming games');
 
-  var nowDate = new Date();
+  var nowDate = new Date('May 9, 2021 00:00:00');
   const upcoming = [];
   games.games.forEach((game) => {
     var gameDate = new Date(game.startTimeUTC);
